@@ -16,10 +16,12 @@ import { DashboardPaciente } from '../pages/DashboardPaciente';
 import { Agendamento } from '../pages/Agendamento';
 import { ChatIA } from '../pages/ChatIA';
 import { NotFound } from '../pages/NotFound';
-import { Relatorios } from '../pages/Relatorios';        // ✅ corrigido: inicial maiúscula
-import { Solicitacoes } from '../pages/Solicitacoes';    // ✅ corrigido: inicial maiúscula
+import { Relatorios } from '../pages/Relatorios';       
+import { Solicitacoes } from '../pages/Solicitacoes';    
 import { Pacientes } from '../pages/Pacientes';
-import { PacienteDetalhes } from '../pages/PacientesDetalhes'; // ✅ corrigido: nome singular
+import { PacienteDetalhes } from '../pages/PacientesDetalhes';
+import { SessaoDetalhes } from '../pages/SessaoDetalhes';
+
 
 /* ==============================
    Componente de rota protegida
@@ -110,6 +112,11 @@ export const AppRoutes = () => {
       <Route path="/pacientes/:id" element={
         <ProtectedRoute><PacienteDetalhes /></ProtectedRoute>
       }/>
+         <Route path="/sessao/:sessionid" element={
+        <ProtectedRoute><SessaoDetalhes /></ProtectedRoute>
+      }/>
+
+
 
       {/* Página 404 */}
       <Route path="*" element={<NotFound />} />
