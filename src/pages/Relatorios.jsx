@@ -67,47 +67,60 @@ export const Relatorios = () => {
         </Card>
       ) : (
         <>
-          {/* KPIs com tendência */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center p-6 bg-gradient-to-br from-blue-100 to-blue-200">
-              <Users className="w-8 h-8 mx-auto mb-2 text-blue-700" />
-              <div className="flex items-center justify-center gap-2">
-                <h3 className="text-3xl font-bold text-dark">{stats.activePatients}</h3>
-                {stats.monthComparison > 0 ? <ArrowUp className="w-4 h-4 text-green-500" /> : <ArrowDown className="w-4 h-4 text-red-500" />}
-              </div>
-              <p className="text-dark/70 text-sm">Pacientes Ativos</p>
-            </Card>
+         {/* KPIs com tendência */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+  {/* Pacientes Ativos */}
+  <Card className="text-center p-6 bg-gradient-to-br from-blue-100 to-blue-200">
+    <Users className="w-8 h-8 mx-auto mb-2 text-blue-700" />
+    <div className="flex items-center justify-center gap-2">
+      <h3 className="text-3xl font-bold text-dark">{stats.activePatients}</h3>
+      {stats.monthComparison > 0 ? (
+        <ArrowUp className="w-4 h-4 text-green-500" />
+      ) : (
+        <ArrowDown className="w-4 h-4 text-red-500" />
+      )}
+    </div>
+    <p className="text-dark/70 text-sm">Pacientes Ativos</p>
+  </Card>
 
-            <Card className="text-center p-6 bg-gradient-to-br from-green-100 to-green-200">
-              <Calendar className="w-8 h-8 mx-auto mb-2 text-green-700" />
-              <h3 className="text-3xl font-bold text-dark">{stats.totalSessions}</h3>
-              <p className="text-dark/70 text-sm">Total de Sessões</p>
-            </Card>
+  {/* Total de Sessões */}
+  <Card className="text-center p-6 bg-gradient-to-br from-green-100 to-green-200">
+    <Calendar className="w-8 h-8 mx-auto mb-2 text-green-700" />
+    <h3 className="text-3xl font-bold text-dark">{stats.totalSessions}</h3>
+    <p className="text-dark/70 text-sm">Total de Sessões</p>
+  </Card>
+</div>
 
-            <Card className="text-center p-6 bg-gradient-to-br from-purple-100 to-purple-200">
-              <TrendingUp className="w-8 h-8 mx-auto mb-2 text-purple-700" />
-              <h3 className="text-3xl font-bold text-dark">{stats.attendanceRate}%</h3>
-              <p className="text-dark/70 text-sm">Taxa de Conclusão</p>
-            </Card>
+{/* Restante dos KPIs */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+  {/* Taxa de Conclusão */}
+  <Card className="text-center p-6 bg-gradient-to-br from-purple-100 to-purple-200">
+    <TrendingUp className="w-8 h-8 mx-auto mb-2 text-purple-700" />
+    <h3 className="text-3xl font-bold text-dark">{stats.attendanceRate}%</h3>
+    <p className="text-dark/70 text-sm">Taxa de Conclusão</p>
+  </Card>
 
-            <Card className="text-center p-6 bg-gradient-to-br from-red-100 to-red-200">
-              <AlertTriangle className="w-8 h-8 mx-auto mb-2 text-red-700" />
-              <h3 className="text-3xl font-bold text-dark">{stats.riskAlerts}</h3>
-              <p className="text-dark/70 text-sm">Alertas de Risco</p>
-            </Card>
+  {/* Alertas de Risco */}
+  <Card className="text-center p-6 bg-gradient-to-br from-red-100 to-red-200">
+    <AlertTriangle className="w-8 h-8 mx-auto mb-2 text-red-700" />
+    <h3 className="text-3xl font-bold text-dark">{stats.riskAlerts}</h3>
+    <p className="text-dark/70 text-sm">Alertas de Risco</p>
+  </Card>
 
-            <Card className="text-center p-6 bg-gradient-to-br from-yellow-100 to-yellow-200">
-              <Clock className="w-8 h-8 mx-auto mb-2 text-yellow-700" />
-              <h3 className="text-3xl font-bold text-dark">{stats.avgSessionTime} min</h3>
-              <p className="text-dark/70 text-sm">Tempo Médio/Sessão</p>
-            </Card>
+  {/* Tempo Médio/Sessão */}
+  <Card className="text-center p-6 bg-gradient-to-br from-yellow-100 to-yellow-200">
+    <Clock className="w-8 h-8 mx-auto mb-2 text-yellow-700" />
+    <h3 className="text-3xl font-bold text-dark">{stats.avgSessionTime} 50 min</h3>
+    <p className="text-dark/70 text-sm">Tempo Médio/Sessão</p>
+  </Card>
 
-            <Card className="text-center p-6 bg-gradient-to-br from-indigo-100 to-indigo-200">
-              <DollarSign className="w-8 h-8 mx-auto mb-2 text-indigo-700" />
-              <h3 className="text-3xl font-bold text-dark">R$ {stats.revenue}</h3>
-              <p className="text-dark/70 text-sm">Faturamento Total</p>
-            </Card>
-          </div>
+  {/* Faturamento Total */}
+  <Card className="text-center p-6 bg-gradient-to-br from-indigo-100 to-indigo-200">
+    <DollarSign className="w-8 h-8 mx-auto mb-2 text-indigo-700" />
+    <h3 className="text-3xl font-bold text-dark">2450 R$ {stats.revenue}</h3>
+    <p className="text-dark/70 text-sm">Faturamento Total</p>
+  </Card>
+</div>
 
           {/* Gráficos */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -125,38 +138,7 @@ export const Relatorios = () => {
               </ResponsiveContainer>
             </Card>
 
-            {/* Evolução Mensal de Faturamento */}
-            <Card className="p-6 rounded-2xl shadow-lg bg-white">
-  <h2 className="text-xl font-semibold text-gray-900 mb-4">Evolução Mensal de Faturamento</h2>
-  <ResponsiveContainer width="100%" height={300}>
-    <LineChart data={monthlyRevenue}>
-      {/* Grade do gráfico */}
-      <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-      
-      {/* Eixo X */}
-      <XAxis dataKey="month" stroke="#6B7280" />
-      
-      {/* Eixo Y */}
-      <YAxis stroke="#6B7280" />
-      
-      {/* Tooltip ao passar o mouse */}
-      <Tooltip 
-        contentStyle={{ backgroundColor: '#f9fafb', borderRadius: 8, border: '1px solid #E5E7EB' }}
-        formatter={(value) => `R$ ${value}`} 
-      />
-      
-      {/* Linha do faturamento */}
-      <Line 
-        type="monotone" 
-        dataKey="revenue" 
-        stroke="#8B5CF6" 
-        strokeWidth={3} 
-        dot={{ r: 5, fill: '#8B5CF6', stroke: '#fff', strokeWidth: 2 }} 
-        activeDot={{ r: 7 }} 
-      />
-    </LineChart>
-  </ResponsiveContainer>
-</Card>
+            
 
 
             {/* Status das Sessões */}
