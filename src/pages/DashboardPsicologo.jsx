@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { mockApi } from '../services/mockApi';
 import { Calendar, Users, Bell, CheckCheck } from 'lucide-react';
-import { CardKpi } from '../components/cardkpi';
+import { CardKpi } from '../components/Cardkpi';
 import { AppointmentCard } from '../components/AppointmentCard';
  
 export const DashboardPsicologo = () => {
