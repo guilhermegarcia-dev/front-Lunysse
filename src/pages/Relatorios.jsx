@@ -126,18 +126,38 @@ export const Relatorios = () => {
             </Card>
 
             {/* Evolução Mensal de Faturamento */}
-            <Card>
-              <h2 className="text-xl font-semibold text-dark mb-4">Evolução Mensal de Faturamento</h2>
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={monthlyRevenue || []}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="revenue" stroke="#6B46C1" strokeWidth={3} />
-                </LineChart>
-              </ResponsiveContainer>
-            </Card>
+            <Card className="p-6 rounded-2xl shadow-lg bg-white">
+  <h2 className="text-xl font-semibold text-gray-900 mb-4">Evolução Mensal de Faturamento</h2>
+  <ResponsiveContainer width="100%" height={300}>
+    <LineChart data={monthlyRevenue}>
+      {/* Grade do gráfico */}
+      <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+      
+      {/* Eixo X */}
+      <XAxis dataKey="month" stroke="#6B7280" />
+      
+      {/* Eixo Y */}
+      <YAxis stroke="#6B7280" />
+      
+      {/* Tooltip ao passar o mouse */}
+      <Tooltip 
+        contentStyle={{ backgroundColor: '#f9fafb', borderRadius: 8, border: '1px solid #E5E7EB' }}
+        formatter={(value) => `R$ ${value}`} 
+      />
+      
+      {/* Linha do faturamento */}
+      <Line 
+        type="monotone" 
+        dataKey="revenue" 
+        stroke="#8B5CF6" 
+        strokeWidth={3} 
+        dot={{ r: 5, fill: '#8B5CF6', stroke: '#fff', strokeWidth: 2 }} 
+        activeDot={{ r: 7 }} 
+      />
+    </LineChart>
+  </ResponsiveContainer>
+</Card>
+
 
             {/* Status das Sessões */}
             <Card>
