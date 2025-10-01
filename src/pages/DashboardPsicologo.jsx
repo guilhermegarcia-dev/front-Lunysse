@@ -105,13 +105,15 @@ export const DashboardPsicologo = () => {
         <div className="bg-white rounded-lg shadow-md p-6 text-center border-2 border-dashed border-light/30">
           <Users className="w-16 h-16 text-light/50 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-dark mb-2">
-            Bem-vindo ao Lunysse!
-          </h3>
-          <p className="text-dark/70 mb-4">
-            Você é novo por aqui. Seus pacientes e agendamentos aparecerão neste
-            dashboard conforme você começar a receber solicitações e agendar
-            sessões.
-          </p>
+  Bem-vindo ao Lunysse, {user.name}! 🌟
+</h3>
+<p className="text-dark/70 mb-4">
+  Estamos felizes por ter você com a gente. Conforme você começar a receber solicitações e marcar sessões, este painel será preenchido automaticamente.
+</p>
+<p className="text-sm text-dark/50">
+  Enquanto isso, aproveite para explorar o menu lateral e conhecer todas as ferramentas que preparamos para te apoiar no cuidado com seus pacientes.
+</p>
+
           <p className="text-sm text-dark/50">
             Explore o menu lateral para conhecer todas as funcionalidades
             disponíveis.
@@ -121,24 +123,27 @@ export const DashboardPsicologo = () => {
  
       {/* KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <CardKpi icon={Users} value={totalPatients} label="Pacientes Ativos" />
-        <CardKpi
-          icon={Calendar}
-          value={todayAppointments.length}
-          label="Sessões Hoje"
-          color="text-accent"
-        />
-        <CardKpi
-          icon={CheckCheck}
-          value={completedSessions}
-          label="Sessões Concluídas"
-          color="text-medium"
-        />
-        <CardKpi
-          icon={Bell}
-          value={pendingRequests}
-          label="Solicitações Pendentes"
-        />
+      <CardKpi
+  icon={Users}
+  value={totalPatients}
+  label="Pacientes Ativos"
+/>
+<CardKpi
+  icon={Calendar}
+  value={todayAppointments.length}
+  label="Sessões marcadas para hoje"
+/>
+<CardKpi
+  icon={CheckCheck}
+  value={completedSessions}
+  label="Sessões já concluídas"
+/>
+<CardKpi
+  icon={Bell}
+  value={pendingRequests}
+  label="Solicitações aguardando resposta"
+/>
+
       </div>
  
      
@@ -146,7 +151,7 @@ export const DashboardPsicologo = () => {
         <div className="mt-4">
           <input
             type="text"
-            placeholder="Buscar paciente..."
+            placeholder="Digite o nome do paciente para encontrar agendamentos..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
@@ -164,13 +169,12 @@ export const DashboardPsicologo = () => {
             <div className="text-center py-8">
               <Calendar className="w-16 h-16 text-dark/30 mx-auto mb-4" />
               <p className="text-dark/70 mb-2">
-                Nenhum agendamento futuro encontrado.
-              </p>
-              <p className="text-sm text-dark/50">
-                {totalPatients === 0
-                  ? 'Você ainda não possui pacientes cadastrados.'
-                  : 'Todos os agendamentos estão em dia!'}
-              </p>
+  Você ainda não possui agendamentos futuros.
+</p>
+<p className="text-sm text-dark/50">
+  Assim que sessões forem agendadas, elas aparecerão aqui. 😊
+</p>
+
             </div>
           ) : (
             <div className="space-y-3">
